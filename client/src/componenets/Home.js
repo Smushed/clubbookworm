@@ -3,7 +3,7 @@ import { withAuthorization } from './Session';
 import { Link } from 'react-router-dom';
 import * as Routes from '../constants/routes';
 import axios from 'axios';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Col, Button } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 const cardStyle = {
     border: '1px solid darkgrey',
@@ -12,6 +12,8 @@ const cardStyle = {
     marginRight: '5px',
     overflow: 'auto',
     height: '600px',
+    width: '22%',
+    float: 'left',
     marginBottom: '10px'
 };
 
@@ -38,6 +40,11 @@ const cardTitleStyle = {
 const cardBodyStyle = {
     fontSize: '15px',
     margin: '0 auto'
+};
+
+const displayStyle = {
+    margin: '0 auto',
+    textAlign: 'center'
 };
 
 //Stateful component to allow the grouplist to properly populate
@@ -79,9 +86,14 @@ class Home extends Component {
     render() {
         const { grouplist, hasGroups } = this.state;
         return (
-            <div>
-                {hasGroups ? (grouplist.map(groupID => <GroupCard key={groupID} groupID={groupID} />)) : (<NoGroup />)}
-            </div>
+            <Fragment>
+                {hasGroups ? (
+                    <Fragment>
+                        <h3 style={displayStyle}>Your Groups:</h3>
+                        {grouplist.map(groupID => <GroupCard key={groupID} groupID={groupID} />)}
+                    </Fragment>)
+                    : (<NoGroup />)}
+            </Fragment>
         );
     };
 };
@@ -161,30 +173,28 @@ class GroupCard extends Component {
         const { groupID } = this.props;
 
         return (
-            <Col sm="3">
-                <Card style={cardStyle}>
-                    <CardBody style={cardBodyStyle}>
-                        <CardTitle style={cardTitleStyle}>
-                            <strong>{groupName}</strong>
-                        </CardTitle>
+            <Card style={cardStyle}>
+                <CardBody style={cardBodyStyle}>
+                    <CardTitle style={cardTitleStyle}>
+                        <strong>{groupName}</strong>
+                    </CardTitle>
+                    <br />
+                    <CardSubtitle>
+                        <strong>Next Chapter:  </strong>{currentBenchmark}
+                    </CardSubtitle>
+                </CardBody>
+                <CardImg style={cardImageStyle} src={bookImage} alt={bookTitle} />
+                <CardBody style={cardBodyStyle}>
+                    <CardText>
+                        {author && <PostAuthor author={author} />}
                         <br />
-                        <CardSubtitle>
-                            <strong>Next Chapter:  </strong>{currentBenchmark}
-                        </CardSubtitle>
-                    </CardBody>
-                    <CardImg style={cardImageStyle} src={bookImage} alt={bookTitle} />
-                    <CardBody style={cardBodyStyle}>
-                        <CardText>
-                            {author && <PostAuthor author={author} />}
-                            <br />
-                            {date && postDate.toLocaleString()}
-                        </CardText>
-                        <Link to={`/group/${groupID}`}>
-                            <Button color='success'>Go to Club</Button>
-                        </Link>
-                    </CardBody>
-                </Card>
-            </Col>
+                        {date && postDate.toLocaleString()}
+                    </CardText>
+                    <Link to={`/group/${groupID}`}>
+                        <Button color='success'>Go to Club</Button>
+                    </Link>
+                </CardBody>
+            </Card>
         );
     };
 };

@@ -21,16 +21,27 @@ const initialState = {
 };
 
 const textsize = {
-    fontSize: "25px"
+    fontSize: '25px'
 }
-const formlabelStyle = {
-    fontSize: "25px"
+const formStyle = {
+    fontSize: '25px',
+    width: '50%',
+    textAlign: 'center',
+    margin: '0 auto'
 };
 
-const forminputsize = {
-    fontSize: "20px"
+const inputSize = {
+    fontSize: '20px',
 };
 
+const headerStyle = {
+    textAlign: 'center'
+};
+
+const descriptionStyle = {
+    fontSize: '20px',
+    height: '200px'
+};
 
 class CreateGroup extends Component {
     constructor(props) {
@@ -51,12 +62,12 @@ class CreateGroup extends Component {
 
         const { groupName, groupDescription } = this.state;
 
-        const dbResponse = await axios.post('/api/creategroup', { currentUserID, groupName, groupDescription });
+        const dbResponse = await axios.post(`/api/creategroup`, { currentUserID, groupName, groupDescription });
 
         Alert.fire({
-            type: 'success',
+            type: `success`,
             title: `${groupName} Created!`,
-            text: "Taking you to the club page. Why don't you pick a book or add a user?"
+            text: `Taking you to the club page. Why don't you pick a book or add a user?`
         });
 
         this.props.history.push(`/group/${dbResponse.data._id}`);
@@ -69,17 +80,17 @@ class CreateGroup extends Component {
 
         return (
             <div>
-                <br />
+                <h2 style={headerStyle}>Create a group</h2>
                 {/* If there's an error with sign in then display the error */}
                 {error && <p>{error.message}</p>}
 
-                <Form style={formlabelStyle} onSubmit={this.handleSubmit}>
+                <Form style={formStyle} onSubmit={this.handleSubmit}>
                     <FormGroup>
-                        <Label style={labelStyle} htmlFor="groupName" for="text"> Group Name: </Label>
+                        <Label style={labelStyle} htmlFor='groupName' for='text'> Group Name: </Label>
                         <Input
-                            style={forminputsize}
-                            type="text"
-                            name="groupName"
+                            style={inputSize}
+                            type='text'
+                            name='groupName'
 
                             placeholder='Enter A Group Name'
                             value={this.state.groupName}
@@ -88,10 +99,10 @@ class CreateGroup extends Component {
                     </FormGroup>
 
                     <FormGroup>
-                        <Label style={labelStyle} htmlFor="groupDescription" for="text">Enter A Group Description: </Label>
+                        <Label style={labelStyle} htmlFor='groupDescription' for='text'>Enter A Group Description: </Label>
                         <Input
-                            style={forminputsize}
-                            type="text"
+                            style={descriptionStyle}
+                            type='textarea'
                             name='groupDescription'
                             placeholder='Description'
                             value={this.state.groupDescription}
@@ -99,10 +110,10 @@ class CreateGroup extends Component {
                         />
                     </FormGroup>
                     <Button
-                        color="secondary"
-                        size="lg"
+                        color='primary'
+                        size='lg'
                         disabled={isInvalid}
-                        type="submit"
+                        type='submit'
                     >Create New Group
                     </Button>
 
