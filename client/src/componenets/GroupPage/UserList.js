@@ -1,9 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Row, Col } from "reactstrap";
-import { Button, Form, FormGroup, Label, Input, } from 'reactstrap';
-
 
 const UserList = (props) => {
     return (
@@ -14,8 +11,8 @@ const UserList = (props) => {
             </div>
             <br />
         </Fragment>
-    )
-}
+    );
+};
 
 class SingleUser extends Component {
     constructor(props) {
@@ -23,17 +20,17 @@ class SingleUser extends Component {
         this.state = {
             username: '',
             error: null
-        }
-    }
+        };
+    };
 
     componentDidMount = async () => {
         const dbResponse = await axios.get(`/api/getuserbyid/${this.props.userID}`);
         if (dbResponse.status === 200) {
-            this.setState({ username: dbResponse.data.local.username })
+            this.setState({ username: dbResponse.data.local.username });
         } else {
-            this.setState({ error: dbResponse.data })
-        }
-    }
+            this.setState({ error: dbResponse.data });
+        };
+    };
 
     render() {
         return (
