@@ -1,16 +1,10 @@
-import React, { Component } from 'react';
-import Worm from './images/wormlong2.png'
-
-
+import React, { Component, Fragment } from 'react';
 import { withAuthorization } from '../Session';
 import axios from 'axios';
 import { Button } from 'reactstrap';
-// import Container from 'react-bootstrap/Container';
 import AddPost from './AddPost';
-import { Container, Row, Col } from 'reactstrap';
-
-
-// import { url } from 'inspector';
+import { Row, Col } from 'reactstrap';
+import Worm from './images/wormlong2.png'
 
 const divider = {
     height: '50px',
@@ -20,14 +14,6 @@ const divider = {
     backgroundImage: `url(${Worm})`,
     marginTop: '10px',
     marginBottom: '-5px',
-    // borderBottom: '2px solid',
-    // borderLeft: '2px solid',
-    // borderRight: '2px solid',
-
-
-
-
-
 }
 
 const date = {
@@ -41,18 +27,12 @@ const buttonPosition = {
     marginTop: '10px',
 }
 
-
-
-
 const commentContainer = {
     borderStyle: 'solid',
     borderWidth: '2px',
-    // borderBottom: 'none',
     backgroundColor: '#e9ecef',
     marginTop: '10px',
     marginBottom: '20px',
-
-
 }
 
 const postTitle = {
@@ -63,10 +43,6 @@ const postTitle = {
 const postStyle = {
     fontSize: '12px',
 }
-
-
-
-
 
 const inputStyle = {
     width: `50%`,
@@ -179,7 +155,7 @@ class SinglePost extends Component {
                     </div>
                 </div>
             </span>
-        )
+        );
     };
 };
 
@@ -188,7 +164,7 @@ class ShowComment extends Component {
         super(props)
         this.state = {
             username: ''
-        }
+        };
     };
 
     componentDidMount = () => {
@@ -211,11 +187,7 @@ class ShowComment extends Component {
         const commentDate = new Date(this.props.comment.date)
 
         return (
-            <Container>
-
-
-
-
+            <Fragment>
                 <p style={postStyle}>
                     <strong>{username} : </strong>
                     {text}
@@ -228,9 +200,9 @@ class ShowComment extends Component {
                     </Row>
                 </div>
                 <hr></hr>
-            </Container>
-        )
-    }
+            </Fragment>
+        );
+    };
 };
 
 class AddComment extends Component {
@@ -238,7 +210,7 @@ class AddComment extends Component {
         super(props)
         this.state = {
             comment: ''
-        }
+        };
     };
 
     handleSubmit = async () => {
@@ -249,9 +221,9 @@ class AddComment extends Component {
         const dbResponse = await axios.post(`/api/newcomment`, { userID, postID, comment });
         if (dbResponse.status === 200) {
             this.props.getAllPosts();
-            this.setState({ 'comment': '' })
-        }
-    }
+            this.setState({ comment: '' })
+        };
+    };
 
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
@@ -266,8 +238,7 @@ class AddComment extends Component {
 
             <div>
                 <Row>
-                    <Col sm={{ size: '5', offset: 2 }}>
-
+                    <Col sm={{ size: '8', offset: 2 }}>
                         <input className='form-input'
                             style={inputStyle}
                             type='text'
@@ -276,16 +247,16 @@ class AddComment extends Component {
                             value={comment}
                             onChange={this.handleChange}></input>
                     </Col>
-                    <Col sm={{ size: '2', offset: -3 }}>
+                    <Col sm={{ size: '2' }}>
                         <Button style={buttonPosition} color="primary"
                             disabled={isInvalid}
                             onClick={this.handleSubmit}>Add Comment</Button>
                     </Col>
                 </Row>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 const condition = authUser => !!authUser;
 

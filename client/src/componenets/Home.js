@@ -10,25 +10,26 @@ const cardStyle = {
     borderRadius: '2px',
     marginLeft: '5px',
     marginRight: '5px',
-    height: 'auto',
     overflow: 'auto',
     height: '600px',
     marginBottom: '10px'
-}
+};
+
 const textsize = {
-    fontSize: "25px"
-}
+    fontSize: '25px'
+};
 
 const textsize2 = {
-    fontSize: "25px"
-}
+    fontSize: '25px',
+    margin: '0 auto'
+};
 
 const cardImageStyle = {
     paddingLeft: '2px',
     paddingRight: '2px',
     width: '200px',
     margin: '0 auto'
-}
+};
 
 const cardTitleStyle = {
     fontSize: '25px',
@@ -37,7 +38,7 @@ const cardTitleStyle = {
 const cardBodyStyle = {
     fontSize: '15px',
     margin: '0 auto'
-}
+};
 
 //Stateful component to allow the grouplist to properly populate
 class Home extends Component {
@@ -79,17 +80,17 @@ class Home extends Component {
         const { grouplist, hasGroups } = this.state;
         return (
             <div>
-                {hasGroups ? (grouplist.map(groupID => <GroupCard key={groupID} groupID={groupID} />)) : (<Testing />)}
+                {hasGroups ? (grouplist.map(groupID => <GroupCard key={groupID} groupID={groupID} />)) : (<NoGroup />)}
             </div>
         );
     };
 };
 
-const Testing = () => {
+const NoGroup = () => {
     return (
         <div>
             <p style={textsize}><strong>Welcome to Bookworm!</strong> </p>
-            <p style={{ margin: '0 auto' }} style={textsize2} >You’ve taken your first step into being more engaged with reading! Why not create a group above? Once there be sure to add a book and invite some of your friends to join!</p>
+            <p style={textsize2} >You’ve taken your first step into being more engaged with reading! Why not create a group above? Once there be sure to add a book and invite some of your friends to join!</p>
         </div>
     )
 }
@@ -141,8 +142,7 @@ class GroupCard extends Component {
                             date: postData.data[0].date
                         });
                     };
-                }))
-
+                }));
             });
         };
     };
@@ -222,7 +222,7 @@ class PostAuthor extends Component {
 
 const HomeLink = () => (
     <Link to={Routes.home}>
-        <button style={textsize} className='btn btn-link'>Home</button>
+        <Button style={textsize} color='link'>Home</Button>
     </Link>
 );
 
