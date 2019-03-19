@@ -47,6 +47,12 @@ const displayStyle = {
     textAlign: 'center'
 };
 
+const logo = {
+    width: '50px',
+    background: 'white',
+    borderRadius: '50%'
+}
+
 //Stateful component to allow the grouplist to properly populate
 class Home extends Component {
     constructor(props) {
@@ -232,7 +238,7 @@ class PostAuthor extends Component {
 
 const HomeLink = () => (
     <Link to={Routes.home}>
-        <Button style={textsize} color='link'>Home</Button>
+        <img src='../img/bookLogo.png' alt='Book Logo' style={logo} />
     </Link>
 );
 
