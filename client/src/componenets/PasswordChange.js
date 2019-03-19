@@ -5,15 +5,18 @@ import { withAuthorization } from './Session';
 
 import { withFirebase } from './Firebase';
 import * as Routes from '../constants/routes';
-
+import { Form, FormGroup, Label, Input, Button, Col } from "reactstrap";
 
 const inputStyle = {
-    width: '50%',
-    height: '40px'
+    width: '35%',
+    height: '40px',
+    marginLeft: 'auto',
+    marginRight: 'auto'
 };
 
 const labelStyle = {
-    marginBottom: '0px'
+    marginBottom: '0px',
+    fontSize: '20px'
 };
 
 const initalState = {
@@ -94,43 +97,41 @@ class PasswordChangeForm extends Component {
                 <h3>Update Password:</h3>
                 <br />
                 {validMessage && validMessage.map((message, i) => <p key={i}>{message}</p>)}
-                <form className='form-horizontal' onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.handleSubmit}>
                     {error && <p>{error.message}</p>}
-                    <div className="col-1 col-ml-auto">
-                        <label className="form-label" style={labelStyle} htmlFor="password">New Password:</label>
-                    </div>
-                    <div className='form-group'>
-                        <input className="form-input"
+                    <Label style={labelStyle} htmlFor='password'>New Password:</Label>
+                    <FormGroup>
+                        <Input
                             style={inputStyle}
-                            name="password"
+                            name='password'
                             value={password}
                             onChange={this.handleChange}
-                            type="password"
-                            placeholder="New Password"
+                            type='password'
+                            placeholder='New Password'
                         />
-                    </div>
-                    <div className="col-1 col-ml-auto">
-                        <label className="form-label" style={labelStyle} htmlFor="passwordConfirm">Confirm Password:</label>
-                    </div>
-                    <div className='form-group'>
-                        <input className="form-input"
+                    </FormGroup>
+
+                    <Label style={labelStyle} htmlFor='passwordConfirm'>Confirm Password:</Label>
+                    <FormGroup>
+                        <Input
                             style={inputStyle}
-                            name="passwordConfirm"
+                            name='passwordConfirm'
                             value={passwordConfirm}
                             onChange={this.handleChange}
-                            type="password"
-                            placeholder="Confirm New Password"
+                            type='password'
+                            placeholder='Confirm New Password'
                         />
-                    </div>
-                    <div className="form-group ">
-                        <div className="col-7"></div>
-                        <button
-                            className="btn btn-primary col-1 col-mr-auto"
+                    </FormGroup>
+                    <FormGroup>
+                        <Button
+                            color='primary'
                             disabled={isInvalid}
-                            type="submit">Update Password</button>
-                    </div>
+                            type='submit'>
+                            Update Password
+                            </Button>
+                    </FormGroup>
 
-                </form>
+                </Form>
             </div>
         );
     }
