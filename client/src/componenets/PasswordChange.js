@@ -5,7 +5,7 @@ import { withAuthorization } from './Session';
 
 import { withFirebase } from './Firebase';
 import * as Routes from '../constants/routes';
-import { Form, FormGroup, Label, Input, Button, Col } from "reactstrap";
+import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 
 const inputStyle = {
     width: '35%',

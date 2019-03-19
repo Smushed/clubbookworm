@@ -7,11 +7,10 @@ import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } fr
 
 const cardStyle = {
     border: '1px solid darkgrey',
-    borderRadius: '2px',
-    marginLeft: '5px',
-    marginRight: '5px',
+    borderRadius: '5px',
+    marginLeft: '50px',
     overflow: 'auto',
-    height: '600px',
+    height: '500px',
     width: '22%',
     float: 'left',
     marginBottom: '10px'
@@ -33,10 +32,9 @@ const textsize2 = {
 };
 
 const cardImageStyle = {
-    paddingLeft: '2px',
-    paddingRight: '2px',
     width: '200px',
-    margin: '0 auto'
+    margin: '0 auto',
+    borderRadius: '2px'
 };
 
 const cardTitleStyle = {
@@ -46,11 +44,6 @@ const cardTitleStyle = {
 const cardBodyStyle = {
     fontSize: '15px',
     margin: '0 auto'
-};
-
-const displayStyle = {
-    margin: '0 auto',
-    textAlign: 'center'
 };
 
 const logo = {
@@ -101,7 +94,7 @@ class Home extends Component {
             <Fragment>
                 {hasGroups ? (
                     <Fragment>
-                        <h3 style={displayStyle}>Your Groups:</h3>
+                        <br />
                         {grouplist.map(groupID => <GroupCard key={groupID} groupID={groupID} />)}
                     </Fragment>)
                     : (<NoGroup />)}
@@ -190,7 +183,6 @@ class GroupCard extends Component {
                     <CardTitle style={cardTitleStyle}>
                         <strong>{groupName}</strong>
                     </CardTitle>
-                    <br />
                     <CardSubtitle>
                         <strong>Next Chapter:  </strong>{currentBenchmark}
                     </CardSubtitle>
