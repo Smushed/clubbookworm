@@ -29,13 +29,6 @@ const initialState = {
   addUser: false
 };
 
-const adminpanel = {
-  textAlign: 'center',
-  fontSize: '25px',
-  border: '1px double #000000',
-  padding: '10px',
-  marginBottom: '50px'
-};
 const groupinfopanel = {
   textAlign: 'center',
   fontSize: '50px',
@@ -169,9 +162,13 @@ class GroupPage extends Component {
           <Col xs='6'>
             {error && <p>{error.message}</p>}
             {isAdmin &&
-              <div style={adminpanel}>
-                <GroupNav updatePage={this.updatePage} />
-              </div>
+              <Row>
+                <Col xs='3' />
+                <Col xs='6'>
+                  <GroupNav updatePage={this.updatePage} />
+                </Col>
+                <Col xs='3' />
+              </Row>
             }
             <div style={columnbackground}>
               {currentBook && (
