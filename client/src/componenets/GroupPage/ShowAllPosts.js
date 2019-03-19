@@ -45,6 +45,10 @@ const initalState = {
     postArray: []
 };
 
+const postHeader = {
+    textAlign: 'center'
+}
+
 class ShowAllPosts extends Component {
     constructor(props) {
         super(props)
@@ -78,7 +82,9 @@ class ShowAllPosts extends Component {
         return (
             <div>
                 <AddPost userID={this.props.userID} groupID={groupID} getAllPosts={this.getAllPosts} />
-                <h1>Posts</h1>
+                <br />
+                <br />
+                <h1 style={postHeader}>Posts</h1>
                 {postArray.map(post => <SinglePost key={post._id} post={post} userID={userID} getAllPosts={this.getAllPosts} />)}
             </div>
         );
