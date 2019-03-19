@@ -3,57 +3,47 @@ import { withAuthorization } from '../Session';
 import axios from 'axios';
 import { Button } from 'reactstrap';
 import AddPost from './AddPost';
-import { Row, Col } from 'reactstrap';
-import Worm from './images/wormlong2.png'
+import { Row, Col, Input } from 'reactstrap';
 
-const divider = {
-    height: '50px',
-    width: '100%',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain',
-    backgroundImage: `url(${Worm})`,
-    marginTop: '10px',
-    marginBottom: '-5px',
-}
 
 const date = {
     textAlign: 'center',
-    fontSize: '8px',
+    fontSize: '14px',
     marginBottom: '10px',
-    marginTop: '-1px',
-}
+    marginTop: '-10px',
+};
 
 const buttonPosition = {
-    marginTop: '10px',
-}
+    marginBottom: '15px'
+};
 
-const commentContainer = {
-    borderStyle: 'solid',
-    borderWidth: '2px',
-    backgroundColor: '#e9ecef',
+const postContainer = {
+    border: 'solid 2px #b0b2b3',
+    borderRadius: '2px',
+    backgroundColor: '#f2f5f7',
     marginTop: '10px',
     marginBottom: '20px',
-}
+};
 
-const postTitle = {
+const postUsername = {
     fontSize: '20px',
-    textAlign: 'center',
+    textAlign: 'center'
 }
 
 const postStyle = {
-    fontSize: '12px',
-}
+    fontSize: '16px',
+};
 
 const inputStyle = {
-    width: `50%`,
-    height: `40px`
-}
+    width: `100%`,
+    height: `40px`,
+};
 
 const initalState = {
     text: '',
     error: null,
     postArray: []
-}
+};
 
 class ShowAllPosts extends Component {
     constructor(props) {
@@ -128,17 +118,18 @@ class SinglePost extends Component {
 
         return (
             <span>
-                <div style={commentContainer}>
-                    <div style={postTitle}>
+                <div style={postContainer}>
+                    <div>
                         <Row>
-                            <Col xs="12">
-                                <strong> {title} </strong>
+                            <Col xs='12' style={postUsername}>
+                                <strong>{username}: </strong>
                             </Col>
                         </Row>
                     </div>
 
                     <p style={postStyle}>
-                        <strong>{username} : </strong>
+                        <strong> {title} </strong>
+                        <br />
                         {text}
                     </p>
                     <div style={date}>
@@ -151,8 +142,7 @@ class SinglePost extends Component {
                     <hr></hr>
                     {comment.map(singleComment => <ShowComment key={singleComment._id} comment={singleComment} />)}
                     <AddComment postID={_id} userID={userID} getAllPosts={this.props.getAllPosts} />
-                    <div style={divider}>
-                    </div>
+
                 </div>
             </span>
         );
@@ -238,16 +228,16 @@ class AddComment extends Component {
 
             <div>
                 <Row>
-                    <Col sm={{ size: '8', offset: 2 }}>
-                        <input className='form-input'
+                    <Col xs={{ size: '6', offset: 2 }}>
+                        <Input
                             style={inputStyle}
                             type='text'
                             name='comment'
                             placeholder='Add A Comment'
                             value={comment}
-                            onChange={this.handleChange}></input>
+                            onChange={this.handleChange} />
                     </Col>
-                    <Col sm={{ size: '2' }}>
+                    <Col xs='4'>
                         <Button style={buttonPosition} color="primary"
                             disabled={isInvalid}
                             onClick={this.handleSubmit}>Add Comment</Button>
