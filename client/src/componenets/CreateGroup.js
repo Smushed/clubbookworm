@@ -20,7 +20,7 @@ const initialState = {
     error: null
 };
 
-const textStyle = {
+const navLinkStyle = {
     fontSize: '25px',
     color: 'white',
     textDecoration: 'none',
@@ -38,7 +38,8 @@ const inputSize = {
 };
 
 const headerStyle = {
-    textAlign: 'center'
+    textAlign: 'center',
+    marginBottom: '25px'
 };
 
 const descriptionStyle = {
@@ -84,7 +85,7 @@ class CreateGroup extends Component {
 
         return (
             <div>
-                <h2 style={headerStyle}>Create a group</h2>
+                <h2 style={headerStyle}>Create your group!</h2>
                 {/* If there's an error with sign in then display the error */}
                 {error && <p>{error.message}</p>}
 
@@ -131,7 +132,7 @@ class CreateGroup extends Component {
 
 const CreateGroupLink = () => (
     <Link to={Routes.createGroup}>
-        <button style={textStyle} className='btn btn-link'>Create Group</button>
+        <button style={navLinkStyle} className='btn btn-link'>Create Group</button>
     </Link>
 );
 

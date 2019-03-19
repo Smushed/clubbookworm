@@ -17,13 +17,19 @@ const cardStyle = {
     marginBottom: '10px'
 };
 
+const noGroupMessage = {
+    marginLeft: '25%',
+    width: '50%'
+}
+
 const textsize = {
-    fontSize: '25px'
+    fontSize: '25px',
+    textAlign: 'center'
 };
 
 const textsize2 = {
     fontSize: '25px',
-    margin: '0 auto'
+    textAlign: 'center'
 };
 
 const cardImageStyle = {
@@ -106,7 +112,7 @@ class Home extends Component {
 
 const NoGroup = () => {
     return (
-        <div>
+        <div style={noGroupMessage}>
             <p style={textsize}><strong>Welcome to Bookworm!</strong> </p>
             <p style={textsize2} >You’ve taken your first step into being more engaged with reading! Why not create a group above? Once there be sure to add a book and invite some of your friends to join!</p>
         </div>

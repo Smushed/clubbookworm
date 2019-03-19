@@ -25,6 +25,12 @@ const padding2 = {
     textAlign: 'left',
 };
 
+const navLinkStyle = {
+    fontSize: '25px',
+    color: 'white',
+    textDecoration: 'none',
+}
+
 const NavBar = (props) => {
     return (
         <div>
@@ -51,12 +57,12 @@ const NavBar = (props) => {
                                             <Nav navbar >
                                                 <div style={padding2}>
                                                     <NavItem>
-                                                        <NavLink href={Routes.signin}>Sign In </NavLink>
+                                                        <NavLink style={navLinkStyle} href={Routes.signin}>Sign In </NavLink>
                                                     </NavItem>
                                                 </div>
                                                 <div style={padding}>
                                                     <NavItem>
-                                                        <NavLink href={Routes.signup}>Sign Up</NavLink>
+                                                        <NavLink style={navLinkStyle} href={Routes.signup}>Sign Up</NavLink>
                                                     </NavItem>
                                                 </div>
                                             </Nav>
