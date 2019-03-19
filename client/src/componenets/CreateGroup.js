@@ -20,9 +20,12 @@ const initialState = {
     error: null
 };
 
-const textsize = {
-    fontSize: '25px'
+const textStyle = {
+    fontSize: '25px',
+    color: 'white',
+    textDecoration: 'none',
 }
+
 const formStyle = {
     fontSize: '25px',
     width: '50%',
@@ -42,6 +45,7 @@ const descriptionStyle = {
     fontSize: '20px',
     height: '200px'
 };
+
 
 class CreateGroup extends Component {
     constructor(props) {
@@ -127,7 +131,7 @@ class CreateGroup extends Component {
 
 const CreateGroupLink = () => (
     <Link to={Routes.createGroup}>
-        <button style={textsize} className='btn btn-link'>Create Group</button>
+        <button style={textStyle} className='btn btn-link'>Create Group</button>
     </Link>
 );
 

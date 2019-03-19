@@ -11,19 +11,10 @@ import { Row, Col } from 'reactstrap';
 
 
 const background = {
-    backgroundColor: '#343a40',
+    backgroundColor: '#003366',
     width: 'auto',
     height: '100%',
     overflow: 'hidden',
-
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-};
-
-const textsize = {
-    fontSize: "30px",
-    color: 'white',
 };
 
 const padding = {
@@ -37,12 +28,11 @@ const padding2 = {
 const NavBar = (props) => {
     return (
         <div>
-            <header style={background}
-                className="navbar">
-                <div style={textsize}>
+            <header style={background}>
+                <div>
                     <Row>
                         <Col>
-                            <Navbar color="dark" dark expand="md">
+                            <Navbar expand="md">
                                 {props.authUser ? (<section>
                                     <Nav navbar>
                                         <NavItem >
@@ -58,7 +48,7 @@ const NavBar = (props) => {
                                 </section>
                                 ) : (
                                         <section>
-                                            <Nav style={textsize}  >
+                                            <Nav navbar >
                                                 <div style={padding2}>
                                                     <NavItem>
                                                         <NavLink href={Routes.signin}>Sign In </NavLink>
@@ -74,13 +64,6 @@ const NavBar = (props) => {
                                     )
                                 }
                             </Navbar>
-                        </Col>
-                    </Row>
-                </div>
-                <div >
-                    <Row>
-                        <Col sm={{ size: '4', offset: 1 }}>
-                            LOGO GOES HERE
                         </Col>
                     </Row>
                 </div>
