@@ -5,22 +5,33 @@ import axios from 'axios';
 import { Button, Label, Input, } from "reactstrap";
 
 const inputStyle = {
-    width: '25%',
+    width: '35%',
     height: '40px',
-    fontSize: '16px'
+    fontSize: '16px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginBottom: '10px'
 };
 
 const labelStyle = {
     marginBottom: '0px'
 };
 
-const shiftLeft = {
-    marginLeft: '30px'
+const buttonStyle = {
+    marginBottom: '25px'
+};
+
+const centerText = {
+    textAlign: 'center'
 };
 
 const updateProfileStyle = {
     fontSize: '20px'
 };
+
+const header = {
+    marginTop: '25px',
+}
 
 const profileDisplayStyle = {
     fontSize: '16px'
@@ -94,8 +105,8 @@ class UserProfile extends Component {
         const { isCurrentUser, dbUsername, dbEmail, dbFirstname, dbLastname } = this.state;
 
         return (
-            <div style={shiftLeft}>
-                <h1>{dbUsername}'s Profile</h1>
+            <div style={centerText}>
+                <h1 style={header}>{dbUsername}'s Profile</h1>
                 <div style={profileDisplayStyle}>Username: {dbUsername}</div>
                 <div style={profileDisplayStyle}>Email: {dbEmail}</div>
                 <div style={profileDisplayStyle}>Firstname: {dbFirstname}</div>
@@ -205,6 +216,7 @@ class UpdateInformationForm extends Component {
                     onChange={this.handleChange} />
                 <Button
                     color='primary'
+                    style={buttonStyle}
                     disabled={usernameIsInvalid}
                     onClick={() => this.handleSubmit('username')}>
                     Update Username
@@ -224,6 +236,7 @@ class UpdateInformationForm extends Component {
                     onChange={this.handleChange} />
                 <Button
                     color='primary'
+                    style={buttonStyle}
                     disabled={emailIsInvalid}
                     onClick={() => this.handleSubmit('email')}>
                     Update Email
@@ -243,6 +256,7 @@ class UpdateInformationForm extends Component {
                     onChange={this.handleChange}></Input>
                 <Button
                     color='primary'
+                    style={buttonStyle}
                     disabled={firstnameIsInvalid}
                     onClick={() => this.handleSubmit('firstname')}>
                     Update Firstname
@@ -262,10 +276,12 @@ class UpdateInformationForm extends Component {
                     onChange={this.handleChange} />
                 <Button
                     color='primary'
+                    style={buttonStyle}
                     disabled={lastnameIsInvalid}
                     onClick={() => this.handleSubmit('lastname')}>
                     Update Lastname
                 </Button>
+                <hr />
             </div >
         );
     };

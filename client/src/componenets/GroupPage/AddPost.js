@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withAuthorization } from '../Session';
 import axios from 'axios';
-import { Button, Form, FormGroup, Label, Input, } from 'reactstrap';
+import { Button, Form, FormGroup, Input, } from 'reactstrap';
 
 const labelStyle = {
     fontSize: '25px'
@@ -16,6 +16,12 @@ const initialState = {
     text: '',
     error: null
 };
+
+const newPostMessage = {
+    textAlign: 'center',
+    fontSize: '30px',
+    fontWeight: '600'
+}
 
 class AddPost extends Component {
     constructor(props) {
@@ -58,18 +64,19 @@ class AddPost extends Component {
                 {error && <p>{error.message}</p>}
 
                 <Form style={labelStyle} onSubmit={this.handleSubmit}>
+                    <div style={newPostMessage}>
+                        Add a new post
+                    </div>
                     <FormGroup>
-                        <Label for="text">Post Title</Label>
                         <Input style={forminputsize} type="text" name="title" id="exampleEmail" placeholder="Your Post's Title" value={this.state.title}
                             onChange={this.handleChange} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="text">Post Body</Label>
                         <Input style={forminputsize} type="textarea" name="text" id="exampleText" placeholder='Write your Post'
                             value={this.state.text}
                             onChange={this.handleChange} />
                     </FormGroup>
-                    <Button color="secondary" size="lg"
+                    <Button color="primary" size="lg"
                         disabled={isInvalid}
                         type='submit'>Submit Post</Button>
                 </Form>

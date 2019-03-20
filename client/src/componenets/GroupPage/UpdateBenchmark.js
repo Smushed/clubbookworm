@@ -13,12 +13,15 @@ const initialState = {
     error: null
 };
 
-const formlabelStyle = {
-    fontSize: '25px'
+const formStyle = {
+    fontSize: '25px',
+    textAlign: 'center'
 };
 
-const forminputsize = {
-    fontSize: '20px'
+const formInputSize = {
+    fontSize: '20px',
+    width: '75%',
+    margin: '0 auto'
 };
 
 
@@ -81,14 +84,27 @@ class UpdateBenchmark extends Component {
                     <br />
                     {/* If there's an error with sign in then display the error */}
                     {error && <p>{error.message}</p>}
-                    <Form style={formlabelStyle} onSubmit={this.handleCurrentSubmit}>
+                    <Form style={formStyle} onSubmit={this.handleCurrentSubmit}>
                         <FormGroup>
-                            <Label style={labelStyle} htmlFor='nextBenchmark' for="text"> Next Goal for Group:</Label>
-                            <Input style={forminputsize} type='number' name='nextBenchmark' id="exampleEmail" placeholder='What is the next goal for the group?' value={this.state.nextBenchmark}
+                            <Label style={labelStyle}
+                                htmlFor='nextBenchmark'
+                                for='text'>
+                                Next Chapter Goal for Group:
+                            </Label>
+                            <Input style={formInputSize}
+                                type='number'
+                                name='nextBenchmark'
+                                id="exampleEmail"
+                                placeholder='What is the next goal for the group?'
+                                value={this.state.nextBenchmark}
                                 onChange={this.handleChange} />
                         </FormGroup>
-                        <Button color="secondary" size="lg" disabled={currentIsInvalid}
-                            type='submit'>Submit Post</Button>
+                        <Button color='primary'
+                            size='lg'
+                            disabled={currentIsInvalid}
+                            type='submit'>
+                            Next Chapter
+                        </Button>
                     </Form>
                 </div>
 
@@ -98,15 +114,29 @@ class UpdateBenchmark extends Component {
                     {/* If there's an error with sign in then display the error */}
                     {error && <p>{error.message}</p>}
 
-                    <Form style={formlabelStyle} onSubmit={this.handleTotalSubmit}>
+                    <Form style={formStyle} onSubmit={this.handleTotalSubmit}>
                         <FormGroup>
-                            <Label style={labelStyle} htmlFor='totalBenchmark' for="text"> Update Total Benchmarks / Chapters:</Label>
-                            <Input style={forminputsize} type='number' name='totalBenchmark' id="exampleEmail" placeholder='What is the total benchmarks or chapters of this book?' value={this.state.totalBenchmark}
+                            <Label style={labelStyle}
+                                htmlFor='totalBenchmark'
+                                for="text">
+                                Update Total Benchmarks / Chapters:
+                             </Label>
+                            <Input style={formInputSize}
+                                type='number'
+                                name='totalBenchmark'
+                                id='exampleEmail'
+                                placeholder='What is the total benchmarks or chapters of this book?'
+                                value={this.state.totalBenchmark}
                                 onChange={this.handleChange} />
                         </FormGroup>
-                        <Button color="secondary" size="lg" disabled={totalIsInvalid}
-                            type='submit'>Update Total</Button>
+                        <Button color='primary'
+                            size='lg'
+                            disabled={totalIsInvalid}
+                            type='submit'>
+                            Update Total Chapters
+                            </Button>
                     </Form>
+                    <br />
                 </div>
             </div>
 
