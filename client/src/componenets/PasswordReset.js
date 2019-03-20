@@ -5,6 +5,7 @@ import { compose } from 'recompose';
 import { withFirebase } from './Firebase';
 import * as Routes from '../constants/routes';
 import { withAuthorization } from './Session';
+import { Button } from 'reactstrap';
 
 const inputStyle = {
     width: '50%',
@@ -86,9 +87,7 @@ class PasswordResetFormBase extends Component {
 }
 
 const PasswordResetLink = () => (
-    <p>
-        <Link to={Routes.passwordReset}><button className='btn btn-success'>Forgot Password?</button></Link>
-    </p>
+    <Link to={Routes.passwordReset}><Button color='success'>Forgot Password?</Button></Link>
 );
 
 const condition = authUser => !!authUser;
