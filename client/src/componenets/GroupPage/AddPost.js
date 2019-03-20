@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withAuthorization } from '../Session';
 import axios from 'axios';
-import { Button, Form, FormGroup, Label, Input, } from 'reactstrap';
+import { Button, Form, FormGroup, Input, } from 'reactstrap';
 
 const labelStyle = {
     fontSize: '25px'

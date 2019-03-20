@@ -46,8 +46,6 @@ module.exports = app => {
     app.post(`/api/newcomment`, async (req, res) => {
         const { userID, postID, comment } = req.body;
 
-        res.json({ 'working': userID });
-
         const newComment = await postHandler.createComment(userID, postID, comment);
         res.json(newComment);
     });

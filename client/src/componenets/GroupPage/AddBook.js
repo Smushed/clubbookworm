@@ -44,12 +44,15 @@ const loaderStyle = `
     margin: 0 auto;
 `;
 
-const formlabelStyle = {
-  fontSize: '25px'
+const formStyle = {
+  fontSize: '25px',
+  textAlign: 'center'
 };
 
-const forminputsize = {
-  fontSize: '20px'
+const formInputStyle = {
+  fontSize: '20px',
+  width: '75%',
+  margin: '0 auto'
 };
 
 class AddBookPage extends Component {
@@ -111,15 +114,13 @@ class AddBookPage extends Component {
           />
         ) : (
             <div>
-
-              <Form style={formlabelStyle} onSubmit={this.handleSubmit}>
+              <Form style={formStyle} onSubmit={this.handleSubmit}>
                 <FormGroup>
                   <Label style={labelStyle} htmlFor="bookSearch" for="text">
-                    {" "}
                     Book to Search:
                 </Label>
                   <Input
-                    style={forminputsize}
+                    style={formInputStyle}
                     type="text"
                     name="bookSearch"
                     placeholder="Enter a Book to Search"
@@ -128,11 +129,11 @@ class AddBookPage extends Component {
                   />
                 </FormGroup>
                 <Button
-                  color="secondary"
+                  color="primary"
                   size="lg"
                   disabled={isInvalid}
                   type="submit">
-                  Search Book
+                  Search New Book For Group:
               </Button>
               </Form>{" "}
 
