@@ -8,7 +8,7 @@ import { Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import * as Routes from '../constants/routes';
 import { SignInLink } from './SignIn';
 import WelcomeMessage from './WelcomeMessage';
-
+import Footer from './Footer';
 
 const inputStyle = {
     width: '50%',
@@ -51,13 +51,14 @@ const SignUpPage = () => (
         <Row>
             <Col xs='1' />
             <Col xs='5'>
+                <WelcomeMessage />
+            </Col>
+            <Col xs='5'>
+                <br />
                 <h3>SignUp</h3>
                 <SignUpForm />
                 <SignInLink />
 
-            </Col>
-            <Col xs='5'>
-                <WelcomeMessage />
             </Col>
             <Col xs='1' />
         </Row>
@@ -297,7 +298,7 @@ const SignUpLink = () => (
     <p style={{ fontSize: '16px' }}>
         Don't have an account?
         <Link to={Routes.signup}>
-            <Button color='success' size='lg'>
+            <Button color='success'>
                 Sign Up
             </Button>
         </Link>

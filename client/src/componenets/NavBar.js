@@ -17,10 +17,6 @@ const background = {
     overflow: 'hidden',
 };
 
-const padding = {
-    marginLeft: '40px'
-};
-
 const padding2 = {
     textAlign: 'left',
 };
@@ -54,17 +50,18 @@ const NavBar = (props) => {
                                 </section>
                                 ) : (
                                         <section>
-                                            <Nav navbar >
+                                            <Nav >
+                                                <NavItem >
+                                                    <HomeLink />
+                                                </NavItem>
                                                 <div style={padding2}>
                                                     <NavItem>
                                                         <NavLink style={navLinkStyle} href={Routes.signin}>Sign In </NavLink>
                                                     </NavItem>
                                                 </div>
-                                                <div style={padding}>
-                                                    <NavItem>
-                                                        <NavLink style={navLinkStyle} href={Routes.signup}>Sign Up</NavLink>
-                                                    </NavItem>
-                                                </div>
+                                                <NavItem>
+                                                    <NavLink style={navLinkStyle} href={Routes.signup}>Sign Up</NavLink>
+                                                </NavItem>
                                             </Nav>
                                         </section>
                                     )

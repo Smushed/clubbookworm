@@ -50,6 +50,15 @@ const logo = {
     width: '50px',
     background: 'white',
     borderRadius: '50%'
+};
+
+const titleStyle = {
+    float: 'right',
+    marginLeft: '10px',
+    marginRight: '10px',
+    marginTop: '10px',
+    fontSize: '25px',
+    color: 'white',
 }
 
 //Stateful component to allow the grouplist to properly populate
@@ -237,6 +246,9 @@ class PostAuthor extends Component {
 const HomeLink = () => (
     <Link to={Routes.home}>
         <img src='../img/bookLogo.png' alt='Book Logo' style={logo} />
+        <div style={titleStyle}>
+            Bookworm
+        </div>
     </Link>
 );
 
