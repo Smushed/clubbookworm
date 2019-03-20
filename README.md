@@ -2,14 +2,14 @@
 <br />
 <strong>Deployed at:</strong> https://bookclubs.herokuapp.com/<br/>
 <strong>Title:</strong> BookWorm<br />
-<strong>Developers:</strong> Kevin Flerlage, Will McClung<br />
-<strong>Deployment Date:</strong> 03/02/2019<br />
+<strong>Developers:</strong> Kevin Flerlage<br />
+<strong>Last Deployment Date:</strong> 03/20/2019<br />
 <strong>Developed With:</strong> MERN Stack<br/>
 <strong>Northwestern Coding Bootcamp Project #3</strong><br />
 
 ## **Demo Credentials**
 
-<strong>Email:</strong> test1@test.test<br />
+<strong>Email:</strong> test1@gmail.com<br />
 <strong>Password:</strong> 123456
 <br />
 
@@ -29,6 +29,17 @@ When inside a club, users can chat with other users via a post and comment syste
 
 If the user that is currently logged in the admin of the group, they will have an extra panel which allows them to add users, assign new books for the group to read and update which chapter the group is currently on. This panel and these options are only available if the current user is signed in and is an admin to the group.
 
+## **History**
+
+This app was originally designed as a capstone project to the Northwestern Full Stack Web Development Bootcamp. I partnered with another student to design this application. Prior to their involvement I completed the back end before moving on to the front end. They assisted mostly in the styling of the app, as well as building some of the components for the front end.
+<br />
+<br />
+The original project:
+<br />
+GitHub: https://github.com/ourbookclub/ourbookclub
+<br />
+Heroku: https://bookclubs.herokuapp.com/
+
 ## **Future Developments**
 
 Throughout this process we focused on having a slimmed down MVP to present as the final project for the Northwestern Coding Bootcamp. In the future we would like to add the following features
@@ -38,6 +49,3 @@ Throughout this process we focused on having a slimmed down MVP to present as th
 - Adding a way for users to be requested into groups
 
 ### **Thank you!**
-
-test1@gmail.com
-123456
