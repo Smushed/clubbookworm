@@ -12,7 +12,15 @@ const checkForISBN = (industryIdentifiers) => {
         return true;
     } else {
         return false;
-    }
+    };
+};
+
+const checkForAllFields = (title, authors, thumbnail, pageCount, publishedDate, description) => {
+    if (title && authors && thumbnail && pageCount && publishedDate && description) {
+        return true;
+    } else {
+        return false;
+    };
 };
 
 const checkDuplicate = async (fieldToCheck, valueToCheck, groupID) => {
@@ -53,7 +61,11 @@ module.exports = {
         const search = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchedBook}&maxResults=10&printType=Books`);
 
         //TODO Try and do this in one ForEach or something
-        const searchedBookArray = await search.data.items.filter(book => checkForISBN(book.volumeInfo.industryIdentifiers));
+        const allISBNArray = await search.data.items.filter(book => checkForISBN(book.volumeInfo.industryIdentifiers));
+        const searchedBookArray = await allISBNArray.filter(book => {
+            const { title, authors, thumbnail, pageCount, publishedDate, description } = book;
+            return checkForAllFields(title, authors, thumbnail, pageCount, publishedDate, description)
+        })
 
         //Right now this is the best way I can think of returning the correct array
         //First we filter above to get rid of all books without an ISBN
