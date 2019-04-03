@@ -5,6 +5,10 @@ const checkForISBN = (industryIdentifiers) => {
     //Goes through the data that google returned and searches if the book has an ISBN number tied to it
     //If it doesn't then it will not be returned
 
+    if (!industryIdentifiers) {
+        return false;
+    }
+
     const hasISBN13 = industryIdentifiers.find(id => id.type === `ISBN_13`);
     const hasISBN10 = industryIdentifiers.find(id => id.type === `ISBN_10`);
 
@@ -16,6 +20,7 @@ const checkForISBN = (industryIdentifiers) => {
 };
 
 const checkForAllFields = (title, authors, thumbnail, pageCount, publishedDate, description) => {
+
     if (title && authors && thumbnail && pageCount && publishedDate && description) {
         return true;
     } else {
@@ -63,8 +68,10 @@ module.exports = {
         //TODO Try and do this in one ForEach or something
         const allISBNArray = await search.data.items.filter(book => checkForISBN(book.volumeInfo.industryIdentifiers));
         const searchedBookArray = await allISBNArray.filter(book => {
-            const { title, authors, thumbnail, pageCount, publishedDate, description } = book.volumeInfo;
-            console.log(checkForAllFields(title, authors, thumbnail, pageCount, publishedDate, description))
+
+            const { title, authors, pageCount, publishedDate, description } = book.volumeInfo;
+            const { thumbnail } = book.volumeInfo.imageLinks;
+
             return checkForAllFields(title, authors, thumbnail, pageCount, publishedDate, description)
         });
 
