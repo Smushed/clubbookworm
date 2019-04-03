@@ -72,16 +72,13 @@ module.exports = {
             const { title, authors, pageCount, publishedDate, description } = book.volumeInfo;
             const { thumbnail } = book.volumeInfo.imageLinks;
 
-            return checkForAllFields(title, authors, thumbnail, pageCount, publishedDate, description)
+            return checkForAllFields(title, authors, thumbnail, pageCount, publishedDate, description);
         });
-
-        console.log(searchedBookArray)
 
         //Right now this is the best way I can think of returning the correct array
         //First we filter above to get rid of all books without an ISBN
         //Then we map through the array to pull out only the data we need
         const returnedBookList = await searchedBookArray.map(book => {
-            //TODO Get ISBN
 
             const newBook = {
                 title: book.volumeInfo.title,
