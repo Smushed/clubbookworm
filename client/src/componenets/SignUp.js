@@ -8,7 +8,6 @@ import { Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import * as Routes from '../constants/routes';
 import { SignInLink } from './SignIn';
 import WelcomeMessage from './WelcomeMessage';
-import Footer from './Footer';
 
 const inputStyle = {
     width: '50%',

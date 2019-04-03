@@ -4,7 +4,7 @@ import axios from "axios";
 import { BarLoader } from "react-spinners";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { Col, Button, Form, FormGroup, Label, Input, Card, CardImg, CardText, CardBody, CardTitle, } from "reactstrap";
+import { Row, Col, Button, Form, FormGroup, Label, Input, Card, CardImg, CardBody, CardTitle, } from "reactstrap";
 
 //Using Swal to display messages when add book button is hit
 const Alert = withReactContent(Swal);
@@ -54,6 +54,10 @@ const formInputStyle = {
   width: '75%',
   margin: '0 auto'
 };
+
+const singleBookButton = {
+  width: '100%'
+}
 
 class AddBookPage extends Component {
   constructor(props) {
@@ -230,16 +234,16 @@ class SingleBook extends Component {
   render() {
     const { title, authors, image, pageCount, publishedDate } = this.props.book
     return (
-      <Col sm='6' style={colStyle}>
-        <Card style={cardStyle}>
-          <CardBody style={cardBodyStyle}>
-            <CardTitle style={cardTitleStyle}>
-              <strong>{title}</strong>
-            </CardTitle>
-          </CardBody>
-          <CardImg style={cardImageStyle} top src={image} alt={title} />
-          <CardBody style={cardBodyStyle}>
-            <CardText >
+      <Row>
+        <Col sm={{ size: 6, offset: 3 }}>
+          <Card style={cardStyle}>
+            <CardBody style={cardBodyStyle}>
+              <CardTitle style={cardTitleStyle}>
+                <strong>{title}</strong>
+              </CardTitle>
+            </CardBody>
+            <CardImg style={cardImageStyle} top src={image} alt={title} />
+            <CardBody style={cardBodyStyle}>
               <div>
                 <strong>Author:</strong>
                 <br />
@@ -254,17 +258,13 @@ class SingleBook extends Component {
                 <strong>Date Published:</strong> {publishedDate}
               </div>
               <br />
-              <button style={{ width: '100px' }} onClick={() => this.getChapterCount(title)}>Read this Book</button>
-            </CardText>
-          </CardBody>
-        </Card>
-      </Col>
+              <Button style={singleBookButton} color='primary' onClick={() => this.getChapterCount(title)}>Read this Book</Button>
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
     )
   }
 };
-
-// Taking out the book object to make displaying it easier
-
-
 
 export default AddBookPage;

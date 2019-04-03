@@ -17,7 +17,7 @@ const footer = {
 const Footer = (props) => {
     return (
         <div style={footer}>
-            <img src='../img/bookshelf.jpg' />
+            <img src='../img/bookshelf.jpg' alt='Row of Books' />
         </div>
     )
 }
